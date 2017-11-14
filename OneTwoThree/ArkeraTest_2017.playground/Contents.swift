@@ -27,7 +27,15 @@ import Foundation
 
 */
 
-
+func reverseInt (_ intInput:Int64)->Int{
+    let arrInput = Array(String(intInput))
+    let lengthOfInput = arrInput.count
+    var stringOutput = ""
+    for index in 0 ..< lengthOfInput {
+        stringOutput += String(arrInput[arrInput.count - index])
+    }
+    return 0
+}
 
 
 
