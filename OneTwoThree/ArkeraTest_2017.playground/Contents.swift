@@ -28,24 +28,29 @@ import Foundation
 */
 
 func reverseInt (_ intInput:Int64)->Int?{
+    // Quick fail for negatives
+    if (intInput != abs(intInput)){
+        print("- Warning - reverseInt -")
+        print("- Negative inputs (\(intInput)) currently produce nil outputs -")
+        return nil
+    }
+    
     // Convert int to array of chars for processing
-    // Pow and Mod rely on decimals which cannot convert to strings -___-
-    
-    print("""
-        The int is \(intInput),
-        the unsigned int is \(UInt(intInput))
-        """)
-    
+    // Pow and Mod rely on decimals which cannot convert to Int's - sadness
     let arrInput = Array(String(intInput))
     let lengthOfInput = arrInput.count - 1
     var stringOutput = ""
     
-    
+    // Loops through chars building string in reverse
     for index in 0 ... lengthOfInput {
+        if (index == 0 && arrInput[lengthOfInput - index] == "0"){
+            print ("- Warning - reverseInt -")
+            print ("- Trailing zeros from \(intInput) will be stripped when reversing -")
+        }
         stringOutput += String(arrInput[lengthOfInput - index])
     }
     
-//    Returns actual int instead of optional with warning flag
+    // Returns actual int instead of optional with warning flag
 //    if let intOutput = Int(stringOutput) {
 //        return intOutput
 //    }
@@ -59,6 +64,7 @@ let testArr:Array<Int64> = [200,2000000,10104744,454777,-70,33337]
 for number in testArr{
     let reversed = reverseInt(number)
     print("\(number) reversed is \(String(describing: reversed))")
+    print("")
 }
 
 
