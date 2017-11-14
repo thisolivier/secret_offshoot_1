@@ -13,8 +13,10 @@ import UIKit
 /* 4. Use Main.storyboard and this view controller to build the view in Four.pdf. Consider how your solution might scale for an increased amount of content.
  */
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
 
+    @IBOutlet weak var tableViewOutlet: UITableView!
+    
     var images: [UIImage]? {
         let first = UIImage(named: "apple_one")!
         let second = UIImage(named: "apple_two")!
@@ -31,6 +33,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewOutlet.dataSource = self
+    }
+    
+    // Functions to setup table
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (descriptions != nil) ? descriptions!.count : 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellTemplate = tableView.dequeueReusableCell(withIdentifier: "richTableViewCell")
+        cellTemplate?.detailTextLabel?.text = descriptions![indexPath.row]
+        return cellTemplate!
     }
 }
 
