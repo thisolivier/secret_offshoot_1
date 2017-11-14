@@ -286,7 +286,31 @@ class WordSearchFromArrArrString{
     }
     
     func searchForString(_ target:String) -> Bool{
-        
+        if let map = myMap {
+            let targetUpper = target.uppercased()
+            // Used shortcut here, hope is OK
+            let targetUpperReversed = String(targetUpper.reversed())
+            var rows = [String]()
+            var cols = [String]()
+            for row in 0..<map.count{
+                var rowString = ""
+                for col in 0..<map[row].count{
+                    rowString += map[row][col]
+                    if (row == 0){
+                        cols.append(map[row][col])
+                    } else {
+                        cols[col] += map[row][col]
+                    }
+                }
+                rows.append(rowString)
+            }
+            let rowsAndCols = rows + cols
+            for superString in rowsAndCols{
+                if (superString.contains(targetUpper) || superString.contains(targetUpperReversed)){
+                    return true
+                }
+            }
+        }
         return false
     }
 }
@@ -296,5 +320,13 @@ let wordSearch = WordSearchFromArrArrString([
     ["E","Q","C","A","E"],
     ["L","O","D","R","E"],
     ["L","T","G","H","I"],
-    ["O","P","Z","T","E"],
+    ["O","L","I","V","I"],
     ])
+
+//print("Does our map contain hello?", wordSearch.searchForString("hello"))
+//print("Does our map contain olleh?", wordSearch.searchForString("olleh"))
+//print("Does our map contain olivi?", wordSearch.searchForString("olivi"))
+//print("Does our map contain ivi?", wordSearch.searchForString("ivi"))
+//print("Does our map contain olivier?", wordSearch.searchForString("olivier"))
+//print("Does our map contain boo?", wordSearch.searchForString("boo"))
+
