@@ -30,9 +30,17 @@ import Foundation
 func reverseInt (_ intInput:Int64)->Int?{
     // Convert int to array of chars for processing
     // Pow and Mod rely on decimals which cannot convert to strings -___-
+    
+    print("""
+        The int is \(intInput),
+        the unsigned int is \(UInt(intInput))
+        """)
+    
     let arrInput = Array(String(intInput))
     let lengthOfInput = arrInput.count - 1
     var stringOutput = ""
+    
+    
     for index in 0 ... lengthOfInput {
         stringOutput += String(arrInput[lengthOfInput - index])
     }
