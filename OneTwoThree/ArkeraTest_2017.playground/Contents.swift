@@ -120,12 +120,22 @@ for number in testArr1b{
 
  */
 
-/* Strategy planning
- 
- Could take each char at each stage - provide quick fail for diff lengths - and loop for all matches?
- Could use dict, and check at each letter that pairing is consistent? <--
- Could... create mapping of all chars, and... no... no you couldn't.
-*/
+func areIsomorphicStrings(string1:String, string2:String) -> Bool{
+    // Assumes capitalization should be honored
+    // Converting to arrays for walking
+    let arr1 = Array(string1)
+    let arr2 = Array(string2)
+    
+    // Quick fail for length mismatch
+    if (arr1.count != arr2.count){
+        print("- Info - areIsomorphicStrings - Strings of different lengths are never isomorphic")
+        return false
+    }
+    
+    
+    
+    return true
+}
 
 
 
