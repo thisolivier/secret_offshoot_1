@@ -259,10 +259,12 @@ class WordSearchFromArrArrString{
         for row in mapInput {
             if row.count != testCount{
                 badMap = true
+                break
             }
             for str in row {
                 if str.count != 1 {
                     badMap = true
+                    break
                 }
             }
         }
@@ -282,10 +284,15 @@ class WordSearchFromArrArrString{
         print ("Map failed tests")
         return false
     }
+    
+    func searchForString(_ target:String) -> Bool{
+        
+        return false
+    }
 }
 
 let wordSearch = WordSearchFromArrArrString([
-    ["H","N","I","E","E"],
+    ["H","N","I","E","B"],
     ["E","Q","C","A","E"],
     ["L","O","D","R","E"],
     ["L","T","G","H","I"],
