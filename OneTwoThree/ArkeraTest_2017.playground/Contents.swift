@@ -85,7 +85,7 @@ func reverseInt (_ intInput:Int64)->Int?{
 
 func checkIsPalindromeFromInt (_ intInput:Int64)->Bool{
     // Convert int to array of chars for processing
-    // Assumes negatives should be ignored
+    // Assumes negatives should be treated the same as positives
     let arrInput = Array(String(abs(intInput)))
     let lengthOfInput = arrInput.count - 1
     
@@ -99,7 +99,7 @@ func checkIsPalindromeFromInt (_ intInput:Int64)->Bool{
     return true
 }
 
-let testArr1b:Array<Int64> = [00200,2000000,10104744,454777454,-707,333373333]
+let testArr1b:Array<Int64> = [200,2000000,10104744,4547777454,-707,333373333]
 for number in testArr1b{
     print("Is \(number) a palindrome? \(checkIsPalindromeFromInt(number))")
 }
