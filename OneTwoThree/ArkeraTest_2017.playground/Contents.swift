@@ -89,7 +89,7 @@ func checkIsPalindromeFromInt (_ intInput:Int64)->Bool{
     let arrInput = Array(String(abs(intInput)))
     let lengthOfInput = arrInput.count - 1
     
-    // Loops through chars building string in reverse
+    // Loops through chars checking front and back
     for index in 0 ... lengthOfInput/2 {
         if (arrInput[index] != arrInput[lengthOfInput - index]){
             return false
@@ -157,16 +157,16 @@ func areIsomorphicStrings(string1:String, string2:String) -> Bool{
     return true
 }
 
-let testArr2a = [
-    ["rrbb","aazz"],
-    ["rrbb","aazzz"],
-    ["wubbadubba","sittomizzo"],
-    ["wubbadubba","sittomitto"]
-]
-for pair in testArr2a{
-    print("Iso check - \(pair) - \(areIsomorphicStrings(string1: pair[0], string2: pair[1]))")
-    print("")
-}
+//let testArr2a = [
+//    ["rrbb","aazz"],
+//    ["rrbb","aazzz"],
+//    ["wubbadubba","sittomizzo"],
+//    ["wubbadubba","sittomitto"]
+//]
+//for pair in testArr2a{
+//    print("Iso check - \(pair) - \(areIsomorphicStrings(string1: pair[0], string2: pair[1]))")
+//    print("")
+//}
 
 
 
@@ -184,8 +184,33 @@ for pair in testArr2a{
 
  */
 
+func checkIsPalindromeFromString (_ intInput:String)->Bool{
+    // Convert array of chars for processing
+    // Assumes spaces and punctuation should be honoured
+    let arrInput = Array(intInput)
+    let lengthOfInput = arrInput.count - 1
+    // Quick returns
+    if lengthOfInput == 0 {
+        return true
+    } else if lengthOfInput < 0 {
+        print("- Warning - checkIsPalindromeFromString - Empty strings will always fail")
+        return false
+    }
+    
+    // Loops through checking front and back
+    for index in 0 ... lengthOfInput/2 {
+        if (arrInput[index] != arrInput[lengthOfInput - index]){
+            return false
+        }
+    }
+    // If we got through the loop, it's a palindrome
+    return true
+}
 
-
+//let testArr2b = ["o", "", "boom", "moom", "mo1om", "m0om", "isatankknatasi"]
+//for str in testArr2b {
+//    print ("Is \(str) a string palendrome? \(checkIsPalindromeFromString(str))")
+//}
 
 
 //-----------------------------------------------------------------------------
