@@ -120,6 +120,14 @@ for number in testArr1b{
 
  */
 
+/* Strategy planning
+ 
+ Could take each char at each stage - provide quick fail for diff lengths - and loop for all matches?
+ Could use dict, and check at each letter that pairing is consistent? <--
+ Could... create mapping of all chars, and... no... no you couldn't.
+*/
+
+
 
 
 
