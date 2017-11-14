@@ -60,12 +60,12 @@ func reverseInt (_ intInput:Int64)->Int?{
     return Int(stringOutput)
 }
 
-let testArr:Array<Int64> = [200,2000000,10104744,454777,-70,33337]
-for number in testArr{
-    let reversed = reverseInt(number)
-    print("\(number) reversed is \(String(describing: reversed))")
-    print("")
-}
+//let testArr1a:Array<Int64> = [200,2000000,10104744,454777,-70,33337]
+//for number in testArr{
+//    let reversed = reverseInt(number)
+//    print("\(number) reversed is \(String(describing: reversed))")
+//    print("")
+//}
 
 
 
@@ -83,7 +83,26 @@ for number in testArr{
 
  */
 
+func checkIsPalindromeFromInt (_ intInput:Int64)->Bool{
+    // Convert int to array of chars for processing
+    // Assumes negatives should be ignored
+    let arrInput = Array(String(abs(intInput)))
+    let lengthOfInput = arrInput.count - 1
+    
+    // Loops through chars building string in reverse
+    for index in 0 ... lengthOfInput/2 {
+        if (arrInput[index] != arrInput[lengthOfInput - index]){
+            return false
+        }
+    }
+    
+    return true
+}
 
+let testArr1b:Array<Int64> = [00200,2000000,10104744,454777454,-707,333373333]
+for number in testArr1b{
+    print("Is \(number) a palindrome? \(checkIsPalindromeFromInt(number))")
+}
 
 
 
