@@ -99,10 +99,10 @@ func checkIsPalindromeFromInt (_ intInput:Int64)->Bool{
     return true
 }
 
-let testArr1b:Array<Int64> = [200,2000000,10104744,4547777454,-707,333373333]
-for number in testArr1b{
-    print("Is \(number) a palindrome? \(checkIsPalindromeFromInt(number))")
-}
+//let testArr1b:Array<Int64> = [200,2000000,10104744,4547777454,-707,333373333]
+//for number in testArr1b{
+//    print("Is \(number) a palindrome? \(checkIsPalindromeFromInt(number))")
+//}
 
 
 
@@ -125,19 +125,48 @@ func areIsomorphicStrings(string1:String, string2:String) -> Bool{
     // Converting to arrays for walking
     let arr1 = Array(string1)
     let arr2 = Array(string2)
-    
+    let lengthOfStrings = arr1.count
+    // Could use a custom data structure here to improve runtime - many to many?
+    var dictChecker1 = [Character:Character]()
+    var dictChecker2 = [Character:Character]()
     // Quick fail for length mismatch
-    if (arr1.count != arr2.count){
+    if ( lengthOfStrings != arr2.count){
         print("- Info - areIsomorphicStrings - Strings of different lengths are never isomorphic")
         return false
     }
     
+    // Walks through arrays using an index
+    for index in 0..<lengthOfStrings{
+        let char1 = arr1[index]
+        let char2 = arr2[index]
+        if dictChecker1[char1] == nil && dictChecker2[char2] == nil{
+            // If we haven't seen the char, store the pairing, both ways
+            dictChecker1[char1] = char2
+            dictChecker2[char2] = char1
+        } else if dictChecker1[char1] == nil || dictChecker2[char2] == nil {
+            // If only one pairing exists, it's not isomorphic
+            return false
+        } else if dictChecker1[char1] != char2 {
+            // If the pairing fails, it's not isomorphic
+            // Only need one check since we know all pairings are symettrical
+            return false
+        }
+    }
     
-    
+    // Assuming we got through all that, return true
     return true
 }
 
-
+let testArr2a = [
+    ["rrbb","aazz"],
+    ["rrbb","aazzz"],
+    ["wubbadubba","sittomizzo"],
+    ["wubbadubba","sittomitto"]
+]
+for pair in testArr2a{
+    print("Iso check - \(pair) - \(areIsomorphicStrings(string1: pair[0], string2: pair[1]))")
+    print("")
+}
 
 
 
