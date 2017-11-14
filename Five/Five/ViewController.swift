@@ -23,9 +23,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var musicCount: Int = 1
-    var videoCount: Int = 3
-    var photoCount: Int = 2
+    var musicCount: Int = 188
+    var videoCount: Int = 0
+    var photoCount: Int = 0
 
     @IBOutlet weak var videoCounterOutlet: UILabel!
     @IBOutlet weak var musicCounterOutlet: UILabel!
