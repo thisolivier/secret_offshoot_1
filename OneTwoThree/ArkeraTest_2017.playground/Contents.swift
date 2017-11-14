@@ -27,14 +27,30 @@ import Foundation
 
 */
 
-func reverseInt (_ intInput:Int64)->Int{
+func reverseInt (_ intInput:Int64)->Int?{
+    // Convert int to array of chars for processing
+    // Pow and Mod rely on decimals which cannot convert to strings -___-
     let arrInput = Array(String(intInput))
-    let lengthOfInput = arrInput.count
+    let lengthOfInput = arrInput.count - 1
     var stringOutput = ""
-    for index in 0 ..< lengthOfInput {
-        stringOutput += String(arrInput[arrInput.count - index])
+    for index in 0 ... lengthOfInput {
+        stringOutput += String(arrInput[lengthOfInput - index])
     }
-    return 0
+    
+//    Returns actual int instead of optional with warning flag
+//    if let intOutput = Int(stringOutput) {
+//        return intOutput
+//    }
+//    print("Warning - reverseInt - error in string conversion to int")
+//    return -1
+    
+    return Int(stringOutput)
+}
+
+let testArr:Array<Int64> = [200,2000000,10104744,454777,-70,33337]
+for number in testArr{
+    let reversed = reverseInt(number)
+    print("\(number) reversed is \(String(describing: reversed))")
 }
 
 
