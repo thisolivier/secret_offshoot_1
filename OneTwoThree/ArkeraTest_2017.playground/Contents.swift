@@ -250,8 +250,44 @@ func checkIsPalindromeFromString (_ intInput:String)->Bool{
  - How to refrence the input/array
  */
 
-class wordSearch{
-    init(map:Array<Array<String>>) {
-        <#statements#>
+class WordSearchFromArrArrString{
+    let myMap:Array<Array<String>>?
+    
+    init(_ mapInput:Array<Array<String>>) {
+        var badMap:Bool = false
+        let testCount = mapInput[0].count
+        for row in mapInput {
+            if row.count != testCount{
+                badMap = true
+            }
+            for str in row {
+                if str.count != 1 {
+                    badMap = true
+                }
+            }
+        }
+        myMap = badMap ? nil : mapInput
+        testMapAndPrint()
+    }
+    
+    func testMapAndPrint(_ shouldPrint:Bool = true) -> Bool {
+        if let map = myMap {
+            if shouldPrint {
+                for row in map{
+                    print(row)
+                }
+            }
+            return true
+        }
+        print ("Map failed tests")
+        return false
     }
 }
+
+let wordSearch = WordSearchFromArrArrString([
+    ["H","N","I","E","E"],
+    ["E","Q","C","A","E"],
+    ["L","O","D","R","E"],
+    ["L","T","G","H","I"],
+    ["O","P","Z","T","E"],
+    ])
