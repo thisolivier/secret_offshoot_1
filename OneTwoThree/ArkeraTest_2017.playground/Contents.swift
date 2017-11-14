@@ -236,3 +236,18 @@ func checkIsPalindromeFromString (_ intInput:String)->Bool{
  Output: false
 
  */
+
+/* Strategy planning */
+/*
+ 
+ Going to flat out ignore diagonals for now
+ Things to make sure are guarded against
+ - rows/cols not starting with a string (substrings)
+ - reversed strings
+ 
+ Setup needed
+ - How to structure input/array
+ - How to refrence the input/array
+ */
+
+
