@@ -250,4 +250,8 @@ func checkIsPalindromeFromString (_ intInput:String)->Bool{
  - How to refrence the input/array
  */
 
-
+class wordSearch{
+    init(map:Array<Array<String>>) {
+        <#statements#>
+    }
+}
