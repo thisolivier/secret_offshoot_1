@@ -10,8 +10,18 @@
 
 import UIKit
 
-/* 4. Use Main.storyboard and this view controller to build the view in Four.pdf. Consider how your solution might scale for an increased amount of content.
+/* 4. Use Main.storyboard and this view controller to build the
+ @IBOutlet weak var imageOutlet: UIImageView!
+ view in Four.pdf. Consider how your solution might scale for an increased amount of content.
  */
+
+class richTableViewCellController : UITableViewCell {
+    
+
+    @IBOutlet weak var textOutlet: UILabel!
+    @IBOutlet weak var imageOutlet: UIImageView!
+    
+}
 
 class ViewController: UIViewController, UITableViewDataSource {
 
@@ -42,8 +52,17 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellTemplate = tableView.dequeueReusableCell(withIdentifier: "richTableViewCell")
-        cellTemplate?.detailTextLabel?.text = descriptions![indexPath.row]
+        let cellTemplate = tableView.dequeueReusableCell(withIdentifier: "richTableViewCell") as? richTableViewCellController
+        cellTemplate?.textOutlet?.text = descriptions![indexPath.row]
+        do {
+            var image:UIImage
+            try image = images![indexPath.row]
+            let imageOutlet = cellTemplate?.imageOutlet
+            imageOutlet?.image = image
+            imageOutlet?.layer.cornerRadius = 10
+            imageOutlet?.clipsToBounds = true
+        }
+        
         return cellTemplate!
     }
 }
