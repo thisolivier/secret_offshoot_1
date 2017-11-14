@@ -118,6 +118,14 @@
                             <constraint firstItem="dXP-hF-EzN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qVO-un-7gT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageCounterOutlet" destination="oGg-gk-F2i" id="1EM-ZI-FwM"/>
+                        <outlet property="imageViewOutlet" destination="QE0-CK-pGr" id="njU-Qa-pra"/>
+                        <outlet property="musicCounterOutlet" destination="dcK-gq-bam" id="jCb-aH-QWW"/>
+                        <outlet property="musicViewOutlet" destination="qot-uG-GzA" id="9Y4-vC-iSg"/>
+                        <outlet property="videoCounterOutlet" destination="QvQ-in-OBK" id="maN-hR-x3y"/>
+                        <outlet property="videoViewOutlet" destination="liG-BV-CwJ" id="WWW-lK-9sF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
