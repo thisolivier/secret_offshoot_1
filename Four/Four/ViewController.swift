@@ -20,6 +20,7 @@ class richTableViewCellController : UITableViewCell {
 
     @IBOutlet weak var textOutlet: UILabel!
     @IBOutlet weak var imageOutlet: UIImageView!
+    @IBOutlet weak var decorativeLineOutlet: UIView!
     
 }
 
@@ -59,10 +60,12 @@ class ViewController: UIViewController, UITableViewDataSource {
             try image = images![indexPath.row]
             let imageOutlet = cellTemplate?.imageOutlet
             imageOutlet?.image = image
-            imageOutlet?.layer.cornerRadius = 10
+            imageOutlet?.layer.cornerRadius = 8
             imageOutlet?.clipsToBounds = true
         }
-        
+        if (indexPath.row == descriptions!.count - 1){
+            cellTemplate?.decorativeLineOutlet.isHidden = true
+        }
         return cellTemplate!
     }
 }
